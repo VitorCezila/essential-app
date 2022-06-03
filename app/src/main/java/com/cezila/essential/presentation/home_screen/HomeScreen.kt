@@ -8,8 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.cezila.essential.ui.theme.DarkBackground
+import com.ramcosta.composedestinations.annotation.Destination
 
 @Composable
+@Destination
 fun HomeScreen() {
     Column(
         modifier = Modifier
@@ -18,6 +20,5 @@ fun HomeScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-
     }
 }
