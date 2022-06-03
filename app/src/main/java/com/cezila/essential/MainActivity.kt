@@ -3,22 +3,18 @@ package com.cezila.essential
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
-import com.cezila.essential.ui.theme.EssentialTheme
+import com.cezila.essential.presentation.NavGraphs
+import com.ramcosta.composedestinations.DestinationsNavHost
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.window.statusBarColor = ContextCompat.getColor(this, R.color.dark_background)
+        this.window.statusBarColor = ContextCompat.getColor(this, R.color.background_screen)
         setContent {
-            Navigation()
+            DestinationsNavHost(navGraph = NavGraphs.root)
         }
     }
 }

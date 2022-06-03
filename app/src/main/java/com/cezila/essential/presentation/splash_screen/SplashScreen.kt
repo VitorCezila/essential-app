@@ -18,15 +18,19 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import com.cezila.essential.R
-import com.cezila.essential.Screen
-import com.cezila.essential.ui.theme.DarkBackground
+import com.cezila.essential.presentation.destinations.DrinkScreenDestination
+import com.cezila.essential.ui.theme.BackgroundColor
 import com.cezila.essential.ui.theme.SoftPink
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.delay
 
 @Composable
-fun AnimatedSplash(navController: NavHostController) {
+@Destination(start = true)
+fun AnimatedSplash(
+    navigator: DestinationsNavigator
+) {
     var startAnimation by remember { mutableStateOf(false) }
     val alphaAnim = animateFloatAsState(
         targetValue = if (startAnimation) 1f else 0f,
@@ -38,7 +42,9 @@ fun AnimatedSplash(navController: NavHostController) {
     LaunchedEffect(key1 = true) {
         startAnimation = true
         delay(4000)
-        navController.navigate(Screen.MainScreen.route)
+        navigator.navigate(
+            DrinkScreenDestination()
+        )
     }
     SplashScreen(alpha = alphaAnim.value)
 }
@@ -53,7 +59,7 @@ fun SplashScreen(alpha: Float) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(DarkBackground),
+            .background(BackgroundColor),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {

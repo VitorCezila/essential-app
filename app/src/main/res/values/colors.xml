@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dark_background">#FF1e2742</color>
     <color name="soft_pink">#f78d95</color>
+    <color name="background_screen">#FF0E0E0E</color>
 </resources>
