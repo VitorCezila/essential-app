@@ -46,7 +46,7 @@ fun DrinkScreen() {
             // só montar a tela após a requisição
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data("https://cookienameddesire.com/wp-content/uploads/2016/05/passion-fruit-mojito-recipe-photo-1.jpg")
+                    .data("https://imgur.com/olulv43.jpg")
                     .build(),
                 contentDescription = null,
                 alignment = Center,
@@ -56,7 +56,7 @@ fun DrinkScreen() {
                 colorFilter = ColorFilter.tint(Film, BlendMode.Multiply)
             )
             Text(
-                text = "Passionfruit\nMojito",
+                text = "Chá de \nZizis",
                 color = Color.White,
                 fontSize = 30.sp,
                 fontFamily = Nuosu,
@@ -80,83 +80,104 @@ fun DrinkScreen() {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Row(
-                modifier = Modifier
-                    .padding(start = 30.dp, top = 10.dp)
-            ) {
-                Column {
-                    Text(
-                        text = "Alcohol:",
-                        color = Color.White,
-                        fontSize = 16.sp,
-                        fontFamily = Nuosu
-                    )
-                    // lazy column
-                    Spacer(modifier = Modifier.height(10.dp))
-                    Text(
-                        text = "2 oz White rum",
-                        color = Color.White,
-                        fontSize = 12.sp
-                    )
-                    Text(
-                        text = "3 Mint leaves",
-                        color = Color.White,
-                        fontSize = 12.sp
-                    )
+            Column {
+                Row(
+                    modifier = Modifier
+                        .padding(start = 30.dp, top = 10.dp)
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .width(150.dp),
+                        verticalArrangement = Arrangement.spacedBy(5.dp)
+                    ) {
+                        Text(
+                            text = "Alcohol:",
+                            color = Color.White,
+                            fontSize = 16.sp,
+                            fontFamily = Nuosu
+                        )
+                        Text(
+                            text = "2 oz White rum",
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.width(30.dp))
+
+                    Column(
+                        modifier = Modifier
+                            .width(150.dp),
+                        verticalArrangement = Arrangement.spacedBy(5.dp)
+                    ) {
+                        Text(
+                            text = "Garnish:",
+                            color = Color.White,
+                            fontSize = 16.sp,
+                            fontFamily = Nuosu
+                        )
+                        Text(
+                            text = "Lime wheel",
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                    }
                 }
 
-                Spacer(modifier = Modifier.width(100.dp))
+                Spacer(modifier = Modifier.height(30.dp))
 
-                Column {
-                    Text(
-                        text = "Garnish:",
-                        color = Color.White,
-                        fontSize = 16.sp,
-                        fontFamily = Nuosu
-                    )
-                    // lazy column
-                    Spacer(modifier = Modifier.height(10.dp))
-                    Text(
-                        text = "Lime wheel",
-                        color = Color.White,
-                        fontSize = 12.sp
-                    )
-                    Text(
-                        text = "Passionfruit",
-                        color = Color.White,
-                        fontSize = 12.sp
-                    )
+                Row(
+                    modifier = Modifier
+                        .padding(start = 30.dp, top = 10.dp)
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .width(150.dp),
+                        verticalArrangement = Arrangement.spacedBy(5.dp)
+                    ) {
+                        Text(
+                            text = "Juice",
+                            color = Color.White,
+                            fontSize = 16.sp,
+                            fontFamily = Nuosu
+                        )
+                        Text(
+                            text = "1.5 xícaras de Chá Mate",
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                        Text(
+                            text = "1.0 xícara de Suco de Pêssego",
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                        Text(
+                            text = "1.0 litro de Água",
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.width(30.dp))
+
+                    Column(
+                        modifier = Modifier
+                            .width(150.dp),
+                        verticalArrangement = Arrangement.spacedBy(5.dp)
+                    ) {
+                        Text(
+                            text = "Extra",
+                            color = Color.White,
+                            fontSize = 16.sp,
+                            fontFamily = Nuosu
+                        )
+                        Text(
+                            text = "1.5 xícara de Açúcar",
+                            color = Color.White,
+                            fontSize = 12.sp
+                        )
+                    }
                 }
-            }
-
-            Spacer(modifier = Modifier.height(30.dp))
-
-            Column(
-                modifier = Modifier.padding(start = 30.dp)
-            ) {
-                Text(
-                    text = "Juice",
-                    color = Color.White,
-                    fontSize = 16.sp,
-                    fontFamily = Nuosu
-                )
-                // lazy column
-                Spacer(modifier = Modifier.height(10.dp))
-                Text(
-                    text = "2/4 oz Fresh lime juice",
-                    color = Color.White,
-                    fontSize = 12.sp
-                )
-                Text(
-                    text = "1/4 oz Passionfruit juice",
-                    color = Color.White,
-                    fontSize = 12.sp
-                )
-                Text(
-                    text = "1/2 oz Simple syrup",
-                    color = Color.White,
-                    fontSize = 12.sp
-                )
             }
 
             Spacer(modifier = Modifier.height(80.dp))
@@ -164,13 +185,17 @@ fun DrinkScreen() {
             Button(
                 onClick = { },
                 shape = RoundedCornerShape(50.dp),
-                colors = ButtonDefaults.buttonColors(contentColor = Color.White, backgroundColor = Orange),
+                colors = ButtonDefaults.buttonColors(
+                    contentColor = Color.White,
+                    backgroundColor = Orange
+                ),
                 modifier = Modifier
                     .padding(start = 60.dp)
                     .width(250.dp)
                     .height(56.dp)
-            ){
-                Text( text = "Start mixing")
+                    .align(CenterHorizontally)
+            ) {
+                Text(text = "Start mixing")
             }
         }
     }
