@@ -1,6 +1,5 @@
 package com.cezila.essential.presentation.drink_screen
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,6 +8,7 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.BottomStart
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -17,8 +17,8 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -41,28 +41,30 @@ fun DrinkScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(300.dp)
-                .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp))
+                .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp)),
+            contentAlignment = BottomStart
         ) {
-            // só montar a tela após a requisição
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data("https://imgur.com/olulv43.jpg")
+                    .data("https://imgur.com/MCgcaqK.jpg")
                     .build(),
                 contentDescription = null,
-                alignment = Center,
                 contentScale = ContentScale.FillWidth,
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .fillMaxHeight(),
                 colorFilter = ColorFilter.tint(Film, BlendMode.Multiply)
             )
+
             Text(
-                text = "Chá de \nZizis",
+                text = "Chá de Zizis",
                 color = Color.White,
                 fontSize = 30.sp,
                 fontFamily = Nuosu,
                 modifier = Modifier
                     .align(Alignment.BottomStart)
-                    .padding(start = 30.dp, bottom = 30.dp)
+                    .padding(start = 30.dp, bottom = 40.dp)
+                    .width(100.dp)
             )
         }
 
