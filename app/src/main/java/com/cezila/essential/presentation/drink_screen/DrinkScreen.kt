@@ -23,15 +23,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.cezila.essential.presentation.destinations.DrinkScreenDestination
+import com.cezila.essential.presentation.destinations.HomeScreenDestination
 import com.cezila.essential.ui.theme.BackgroundColor
 import com.cezila.essential.ui.theme.Film
 import com.cezila.essential.ui.theme.Nuosu
 import com.cezila.essential.ui.theme.Orange
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Composable
 @Destination
-fun DrinkScreen() {
+fun DrinkScreen(
+    navigator: DestinationsNavigator
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -185,7 +190,11 @@ fun DrinkScreen() {
             Spacer(modifier = Modifier.height(80.dp))
 
             Button(
-                onClick = { },
+                onClick = {
+                    navigator.navigate(
+                        HomeScreenDestination()
+                    )
+                },
                 shape = RoundedCornerShape(50.dp),
                 colors = ButtonDefaults.buttonColors(
                     contentColor = Color.White,

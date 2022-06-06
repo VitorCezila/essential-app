@@ -7,12 +7,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.cezila.essential.ui.theme.DarkBackground
 import com.ramcosta.composedestinations.annotation.Destination
 
 @Composable
 @Destination
-fun HomeScreen() {
+fun HomeScreen(
+    viewModel: HomeScreenViewModel = hiltViewModel()
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
