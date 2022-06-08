@@ -8,13 +8,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cezila.essential.domain.model.Ingredient
+import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
 fun IngredientItem(
     modifier: Modifier = Modifier,
     ingredient: Ingredient
 ) {
-    Row(modifier = modifier) {
+    FlowRow(modifier = modifier) {
         Text(
             text = "${ingredient.name}:",
             color = Color.White,
