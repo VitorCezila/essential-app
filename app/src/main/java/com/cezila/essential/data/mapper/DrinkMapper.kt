@@ -30,7 +30,8 @@ private fun List<IngredientDto>.toListIngredient(): List<Ingredient> {
                 name = dto.name,
                 amount = dto.amount,
                 originalName = dto.originalName,
-                unit = dto.unit
+                unit = dto.unit,
+                ingredientType = dto.ingredientType
             )
         )
     }

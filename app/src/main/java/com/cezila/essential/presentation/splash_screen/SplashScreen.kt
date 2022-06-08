@@ -19,7 +19,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cezila.essential.R
-import com.cezila.essential.presentation.destinations.DrinkScreenDestination
+import com.cezila.essential.presentation.destinations.HomeScreenDestination
 import com.cezila.essential.ui.theme.BackgroundColor
 import com.cezila.essential.ui.theme.SoftPink
 import com.ramcosta.composedestinations.annotation.Destination
@@ -41,9 +41,9 @@ fun AnimatedSplash(
 
     LaunchedEffect(key1 = true) {
         startAnimation = true
-        delay(4000)
+        delay(2000)
         navigator.navigate(
-            DrinkScreenDestination()
+            HomeScreenDestination()
         )
     }
     SplashScreen(alpha = alphaAnim.value)

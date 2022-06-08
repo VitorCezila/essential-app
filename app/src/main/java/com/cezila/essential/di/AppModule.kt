@@ -18,7 +18,7 @@ object AppModule {
     @Singleton
     fun provideEssentialApi(): EssentialApi {
         return Retrofit.Builder()
-            .baseUrl(EssentialApi.BASE_URL_LOCAL)
+            .baseUrl(EssentialApi.BASE_URL_PROD)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create()

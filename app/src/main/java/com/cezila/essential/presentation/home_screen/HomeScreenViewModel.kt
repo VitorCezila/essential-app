@@ -18,7 +18,7 @@ class HomeScreenViewModel @Inject constructor(
     private val repository: EssentialRepository
 ): ViewModel() {
 
-    private var state by mutableStateOf(HomeState())
+    var state by mutableStateOf(HomeState())
 
     init {
         getDrinks()
@@ -36,6 +36,7 @@ class HomeScreenViewModel @Inject constructor(
         query: String = state.searchQuery.lowercase(),
         fetchFromRemote: Boolean = true
     ) {
+        state = state.copy(isLoading = true)
         viewModelScope.launch {
             repository
                 .getDrinkListings(fetchFromRemote, query)
@@ -44,12 +45,14 @@ class HomeScreenViewModel @Inject constructor(
                         is Resource.Success -> {
                             result.data?.let { listings ->
                                 state = state.copy(
+                                    isLoading = false,
                                     drinks = listings
                                 )
                                 Log.d("Teste", "State: ${state.drinks}")
                             }
                         }
                         is Resource.Loading -> {
+                            Log.d("##Resource Loading", "isLoading: ${result.isLoading}")
                             state = state.copy(isLoading = result.isLoading)
                         }
                         is Resource.Error -> {

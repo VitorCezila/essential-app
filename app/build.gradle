@@ -103,6 +103,10 @@ dependencies {
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.4.2"
 
-    // Koil - Images from URL
+    // Coil - Images from URL
     implementation("io.coil-kt:coil-compose:2.1.0")
+
+    // Gson serialization/deserialization
+    implementation 'com.google.code.gson:gson:2.9.0'
+
 }
