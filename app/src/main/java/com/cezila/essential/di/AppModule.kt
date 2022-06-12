@@ -1,5 +1,8 @@
 package com.cezila.essential.di
 
+import android.app.Application
+import androidx.room.Room
+import com.cezila.essential.data.local.EssentialDatabase
 import com.cezila.essential.data.remote.EssentialApi
 import dagger.Module
 import dagger.Provides
@@ -22,6 +25,16 @@ object AppModule {
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideEssentialDatabase(app: Application): EssentialDatabase {
+        return Room.databaseBuilder(
+            app,
+            EssentialDatabase::class.java,
+            "essential.db"
+        ).build()
     }
 
 }

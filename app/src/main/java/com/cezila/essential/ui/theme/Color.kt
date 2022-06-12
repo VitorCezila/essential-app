@@ -16,3 +16,6 @@ val Orange = Color(0xFFF6A31D)
 val Yellow = Color(0xFFFFD700)
 val YellowSoft = Color(0xFFDFBB7B)
 val GrayUnuse = Color(0xFFA2ADB1)
+
+val RatedColor = Color(0xFFFFFFFF)
+val UnratedColor = Color(0xFF3D3B3B)

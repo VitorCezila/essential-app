@@ -19,7 +19,7 @@ fun IngredientItem(
         Text(
             text = "${ingredient.name}:",
             color = Color.White,
-            fontSize = 12.sp
+            fontSize = 14.sp
         )
 
         Spacer(modifier = Modifier.width(2.dp))
@@ -27,7 +27,7 @@ fun IngredientItem(
         Text(
             text = ingredient.originalName,
             color = Color.White,
-            fontSize = 12.sp,
+            fontSize = 14.sp,
             modifier = Modifier.fillMaxHeight()
         )
     }

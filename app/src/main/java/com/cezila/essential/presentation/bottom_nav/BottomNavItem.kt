@@ -1,4 +1,4 @@
-package com.cezila.essential.presentation
+package com.cezila.essential.presentation.bottom_nav
 
 data class BottomNavItem(
     val name: String,

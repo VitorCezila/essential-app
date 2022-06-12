@@ -2,6 +2,7 @@ package com.cezila.essential.presentation.splash_screen
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,10 +23,13 @@ import com.cezila.essential.R
 import com.cezila.essential.presentation.destinations.HomeScreenDestination
 import com.cezila.essential.ui.theme.BackgroundColor
 import com.cezila.essential.ui.theme.SoftPink
+import com.google.accompanist.pager.ExperimentalPagerApi
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.delay
 
+@ExperimentalFoundationApi
+@ExperimentalPagerApi
 @Composable
 @Destination(start = true)
 fun AnimatedSplash(
@@ -41,7 +45,7 @@ fun AnimatedSplash(
 
     LaunchedEffect(key1 = true) {
         startAnimation = true
-        delay(2000)
+        delay(1500)
         navigator.navigate(
             HomeScreenDestination()
         )

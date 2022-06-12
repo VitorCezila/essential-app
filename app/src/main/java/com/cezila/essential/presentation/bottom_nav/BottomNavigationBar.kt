@@ -1,4 +1,4 @@
-package com.cezila.essential.presentation
+package com.cezila.essential.presentation.bottom_nav
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -24,7 +24,6 @@ fun BottomNavigationBar(
     modifier: Modifier = Modifier,
     onItemClick: (BottomNavItem) -> Unit
 ) {
-    val teste = "home"
     BottomNavigation(
         modifier = modifier,
         backgroundColor = Color.DarkGray,

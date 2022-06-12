@@ -1,13 +1,13 @@
-package com.cezila.essential.presentation.home_screen
+package com.cezila.essential.presentation.search_screen
 
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cezila.essential.domain.repository.EssentialRepository
+import com.cezila.essential.presentation.home_screen.HomeEvent
 import com.cezila.essential.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -16,21 +16,26 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeScreenViewModel @Inject constructor(
+class SearchScreenViewModel @Inject constructor(
     private val repository: EssentialRepository
 ) : ViewModel() {
 
-    var state by mutableStateOf(HomeState())
+    var state by mutableStateOf(SearchState())
     private var searchJob: Job? = null
 
     init {
         getDrinks()
     }
 
-    fun onEvent(event: HomeEvent) {
-        when (event) {
-            is HomeEvent.Refresh -> {
-                getDrinks(fetchFromRemote = true)
+    fun onEvent(event: SearchEvent) {
+        when(event){
+            is SearchEvent.OnSearchQueryChange -> {
+                state = state.copy(searchQuery = event.query)
+                searchJob?.cancel()
+                searchJob = viewModelScope.launch {
+                    delay(500L)
+                    getDrinks()
+                }
             }
         }
     }
@@ -44,7 +49,7 @@ class HomeScreenViewModel @Inject constructor(
             repository
                 .getDrinkListings(fetchFromRemote, query)
                 .collect { result ->
-                    when (result) {
+                    when(result) {
                         is Resource.Success -> {
                             result.data?.let { listings ->
                                 state = state.copy(
@@ -65,4 +70,5 @@ class HomeScreenViewModel @Inject constructor(
                 }
         }
     }
+
 }
