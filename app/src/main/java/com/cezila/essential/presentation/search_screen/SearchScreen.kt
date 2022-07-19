@@ -21,6 +21,7 @@ import com.cezila.essential.presentation.destinations.DrinkScreenDestination
 import com.cezila.essential.ui.theme.BackgroundColor
 import com.cezila.essential.ui.theme.GrayUnuse
 import com.cezila.essential.util.Commom
+import com.cezila.essential.util.Commom.route
 import com.google.accompanist.flowlayout.FlowRow
 import com.google.accompanist.flowlayout.MainAxisAlignment
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -37,6 +38,7 @@ fun SearchScreen(
     viewModel: SearchScreenViewModel = hiltViewModel()
 ) {
 
+    route = "search"
     val gson = Gson()
     val state = viewModel.state
 
@@ -55,12 +57,13 @@ fun SearchScreen(
             )
         }
     ) {
-        if (!state.isLoading) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(BackgroundColor)
-            ) {
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(BackgroundColor)
+        ) {
+            if (!state.isLoading) {
                 OutlinedTextField(
                     value = state.searchQuery,
                     onValueChange = {

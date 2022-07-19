@@ -21,7 +21,6 @@ class HomeScreenViewModel @Inject constructor(
 ) : ViewModel() {
 
     var state by mutableStateOf(HomeState())
-    private var searchJob: Job? = null
 
     init {
         getDrinks()
@@ -48,17 +47,21 @@ class HomeScreenViewModel @Inject constructor(
                         is Resource.Success -> {
                             result.data?.let { listings ->
                                 state = state.copy(
-                                    drinks = listings
+                                    drinks = listings,
+                                    isError = false
                                 )
                                 Log.d("HomeScreen", "Success: ${state.drinks}")
                             }
                         }
                         is Resource.Loading -> {
                             Log.d("HomeScreen", "isLoading: ${result.isLoading}")
-                            state = state.copy(isLoading = result.isLoading)
+                            state = state.copy(
+                                isLoading = result.isLoading,
+                                isError = false
+                            )
                         }
                         is Resource.Error -> {
-                            getDrinks()
+                            state = state.copy(isError = true)
                             Log.d("HomeScreen", "Erro: ${result.message}")
                         }
                     }

@@ -1,12 +1,9 @@
 package com.cezila.essential.presentation.about_screen
 
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -22,15 +19,17 @@ import com.cezila.essential.presentation.bottom_nav.BottomNavItem
 import com.cezila.essential.presentation.bottom_nav.BottomNavigationBar
 import com.cezila.essential.ui.theme.BackgroundColor
 import com.cezila.essential.ui.theme.Nuosu
-import com.cezila.essential.ui.theme.RatedColor
-import com.cezila.essential.ui.theme.UnratedColor
 import com.cezila.essential.util.Commom
+import com.cezila.essential.util.Commom.route
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Composable
 @Destination("about")
 fun AboutScreen(navigator: DestinationsNavigator) {
+
+    route = "about"
+
     Scaffold(
         bottomBar = {
             BottomNavigationBar(
@@ -65,7 +64,7 @@ fun AboutScreen(navigator: DestinationsNavigator) {
             Spacer(Modifier.height(10.dp))
 
             Text(
-                text = "Obrigado por baixar meu aplicativo. \n" + "Todas as receitas foram criadas e testadas pelos meus amigos.",
+                text = "Thanks for downloading my app. \n" + "All recipes were created and tested by my friends.",
                 fontSize = 14.sp,
                 fontFamily = Nuosu,
                 color = Color.White,

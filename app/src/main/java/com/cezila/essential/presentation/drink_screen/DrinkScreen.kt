@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.cezila.essential.domain.model.Drink
+import com.cezila.essential.presentation.DifficultyIcons
 import com.cezila.essential.ui.theme.BackgroundColor
 import com.cezila.essential.ui.theme.Film
 import com.cezila.essential.ui.theme.Nuosu
@@ -27,7 +28,6 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
 import com.google.gson.Gson
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @ExperimentalPagerApi
 @Composable
@@ -49,8 +49,7 @@ fun DrinkScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(300.dp)
-                .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp)),
-            contentAlignment = BottomStart
+                .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp))
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
@@ -64,15 +63,35 @@ fun DrinkScreen(
                 colorFilter = ColorFilter.tint(Film, BlendMode.Multiply)
             )
 
-            Text(
-                text = drink.name,
-                color = Color.White,
-                fontSize = 30.sp,
-                fontFamily = Nuosu,
+            Column(
                 modifier = Modifier
+                    .padding(start = 15.dp)
+            ) {
+                Spacer(modifier = Modifier.height(30.dp))
+
+                Text(
+                    text = drink.name,
+                    fontFamily = Nuosu,
+                    fontSize = 40.sp,
+                    color = Color.White,
+                    modifier = Modifier
+                        .width(200.dp)
+                )
+
+                DifficultyIcons(
+                    drink = drink,
+                    modifier = Modifier.width(60.dp)
+                )
+            }
+
+            Text(
+                text = drink.author,
+                fontFamily = Nuosu,
+                color = Color.White,
+                fontSize = 18.sp,
+                modifier = Modifier
+                    .padding(start = 30.dp, bottom = 20.dp)
                     .align(Alignment.BottomStart)
-                    .padding(start = 30.dp, bottom = 40.dp)
-                    .width(100.dp)
             )
         }
 

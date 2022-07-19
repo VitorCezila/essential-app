@@ -6,5 +6,6 @@ data class HomeState(
     val drinks: List<Drink> = emptyList(),
     val isLoading: Boolean = false,
     val isRefreshing: Boolean = false,
-    val searchQuery: String = ""
+    val searchQuery: String = "",
+    val isError: Boolean = false
 )

@@ -23,6 +23,7 @@ import com.cezila.essential.R
 import com.cezila.essential.presentation.destinations.HomeScreenDestination
 import com.cezila.essential.ui.theme.BackgroundColor
 import com.cezila.essential.ui.theme.SoftPink
+import com.cezila.essential.ui.theme.YellowSoft
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -69,21 +70,21 @@ fun SplashScreen(alpha: Float) {
     ) {
         Text(
             text = "ESSENTIAL",
-            color = SoftPink,
+            color = YellowSoft,
             fontSize = 50.sp,
             fontFamily = fontTitle,
             modifier = Modifier.alpha(alpha = alpha)
         )
         Image(
-            painter = painterResource(R.drawable.logo_splash),
+            painter = painterResource(R.drawable.coffee_icon_transp),
             modifier = Modifier
-                .size(360.dp)
+                .size(180.dp)
                 .alpha(alpha = alpha),
             contentDescription = "Logo Icon"
         )
         Text(
             text = "Let's drink!",
-            color = SoftPink,
+            color = YellowSoft,
             fontSize = 12.sp,
             fontFamily = fontTitle,
             modifier = Modifier.alpha(alpha = alpha)

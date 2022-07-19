@@ -8,6 +8,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cezila.essential.domain.model.Ingredient
+import com.cezila.essential.ui.theme.Nuosu
+import com.cezila.essential.ui.theme.Orange
 import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
@@ -17,18 +19,20 @@ fun IngredientItem(
 ) {
     FlowRow(modifier = modifier) {
         Text(
-            text = "${ingredient.name}:",
-            color = Color.White,
-            fontSize = 14.sp
+            text = "${ingredient.originalName}",
+            color = Orange,
+            fontSize = 16.sp,
+            modifier = Modifier.fillMaxHeight(),
+            fontFamily = Nuosu
         )
 
-        Spacer(modifier = Modifier.width(2.dp))
+        Spacer(modifier = Modifier.width(8.dp))
 
         Text(
-            text = ingredient.originalName,
+            text = "${ingredient.name}",
             color = Color.White,
             fontSize = 14.sp,
-            modifier = Modifier.fillMaxHeight()
+            fontFamily = Nuosu
         )
     }
 
