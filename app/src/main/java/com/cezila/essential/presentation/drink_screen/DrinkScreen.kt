@@ -1,37 +1,57 @@
 package com.cezila.essential.presentation.drink_screen
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.BottomStart
-import androidx.compose.ui.Alignment.Companion.Center
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.cezila.essential.ui.theme.BackgroundColor
-import com.cezila.essential.ui.theme.Film
-import com.cezila.essential.ui.theme.Nuosu
-import com.cezila.essential.ui.theme.Orange
+import com.cezila.essential.R
+import com.cezila.essential.domain.model.Drink
+import com.cezila.essential.presentation.DifficultyIcons
+import com.cezila.essential.presentation.destinations.HomeScreenDestination
+import com.cezila.essential.ui.theme.*
+import com.cezila.essential.util.Commom.route
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.rememberPagerState
+import com.google.gson.Gson
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@OptIn(ExperimentalFoundationApi::class)
+@ExperimentalPagerApi
 @Composable
-@Destination
-fun DrinkScreen() {
+@Destination(route = "drink")
+fun DrinkScreen(
+    navigator: DestinationsNavigator,
+    drinkSerializable: String
+) {
+
+    val gson = Gson()
+    val drink = gson.fromJson(drinkSerializable, Drink::class.java)
+    val pagerState = rememberPagerState()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,12 +61,11 @@ fun DrinkScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(300.dp)
-                .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp)),
-            contentAlignment = BottomStart
+                .clip(RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp))
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data("https://imgur.com/MCgcaqK.jpg")
+                    .data(drink.image)
                     .build(),
                 contentDescription = null,
                 contentScale = ContentScale.FillWidth,
@@ -56,148 +75,64 @@ fun DrinkScreen() {
                 colorFilter = ColorFilter.tint(Film, BlendMode.Multiply)
             )
 
-            Text(
-                text = "Chá de Zizis",
-                color = Color.White,
-                fontSize = 30.sp,
-                fontFamily = Nuosu,
+            Column(
                 modifier = Modifier
+                    .padding(start = 15.dp)
+            ) {
+                Spacer(modifier = Modifier.height(30.dp))
+
+                Text(
+                    text = drink.name,
+                    fontFamily = Nuosu,
+                    fontSize = 40.sp,
+                    color = Color.White,
+                    modifier = Modifier
+                        .width(200.dp)
+                )
+
+                DifficultyIcons(
+                    drink = drink,
+                    modifier = Modifier.width(200.dp),
+                )
+            }
+
+            Text(
+                text = drink.author,
+                fontFamily = Nuosu,
+                color = Color.White,
+                fontSize = 18.sp,
+                modifier = Modifier
+                    .padding(start = 30.dp, bottom = 20.dp)
                     .align(Alignment.BottomStart)
-                    .padding(start = 30.dp, bottom = 40.dp)
-                    .width(100.dp)
             )
+
+            FloatingActionButton(
+                backgroundColor = BackgroundColor,
+                modifier = Modifier
+                    .padding(start = 335.dp, top = 20.dp)
+                    .width(22.dp)
+                    .height(22.dp),
+                contentColor = GrayUnuse,
+                onClick = {
+                    route = "home"
+                    navigator.navigate(HomeScreenDestination)
+                },
+                content = {
+                    Icon(Icons.Filled.Close, "")
+                })
         }
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Column {
-            Text(
-                text = "Ingredients",
-                color = Color.White,
-                fontSize = 24.sp,
-                fontFamily = Nuosu,
-                modifier = Modifier
-                    .padding(start = 30.dp, top = 10.dp)
-            )
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Column {
-                Row(
-                    modifier = Modifier
-                        .padding(start = 30.dp, top = 10.dp)
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .width(150.dp),
-                        verticalArrangement = Arrangement.spacedBy(5.dp)
-                    ) {
-                        Text(
-                            text = "Alcohol:",
-                            color = Color.White,
-                            fontSize = 16.sp,
-                            fontFamily = Nuosu
-                        )
-                        Text(
-                            text = "2 oz White rum",
-                            color = Color.White,
-                            fontSize = 12.sp
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.width(30.dp))
-
-                    Column(
-                        modifier = Modifier
-                            .width(150.dp),
-                        verticalArrangement = Arrangement.spacedBy(5.dp)
-                    ) {
-                        Text(
-                            text = "Garnish:",
-                            color = Color.White,
-                            fontSize = 16.sp,
-                            fontFamily = Nuosu
-                        )
-                        Text(
-                            text = "Lime wheel",
-                            color = Color.White,
-                            fontSize = 12.sp
-                        )
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(30.dp))
-
-                Row(
-                    modifier = Modifier
-                        .padding(start = 30.dp, top = 10.dp)
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .width(150.dp),
-                        verticalArrangement = Arrangement.spacedBy(5.dp)
-                    ) {
-                        Text(
-                            text = "Juice",
-                            color = Color.White,
-                            fontSize = 16.sp,
-                            fontFamily = Nuosu
-                        )
-                        Text(
-                            text = "1.5 xícaras de Chá Mate",
-                            color = Color.White,
-                            fontSize = 12.sp
-                        )
-                        Text(
-                            text = "1.0 xícara de Suco de Pêssego",
-                            color = Color.White,
-                            fontSize = 12.sp
-                        )
-                        Text(
-                            text = "1.0 litro de Água",
-                            color = Color.White,
-                            fontSize = 12.sp
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.width(30.dp))
-
-                    Column(
-                        modifier = Modifier
-                            .width(150.dp),
-                        verticalArrangement = Arrangement.spacedBy(5.dp)
-                    ) {
-                        Text(
-                            text = "Extra",
-                            color = Color.White,
-                            fontSize = 16.sp,
-                            fontFamily = Nuosu
-                        )
-                        Text(
-                            text = "1.5 xícara de Açúcar",
-                            color = Color.White,
-                            fontSize = 12.sp
-                        )
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(80.dp))
-
-            Button(
-                onClick = { },
-                shape = RoundedCornerShape(50.dp),
-                colors = ButtonDefaults.buttonColors(
-                    contentColor = Color.White,
-                    backgroundColor = Orange
-                ),
-                modifier = Modifier
-                    .padding(start = 60.dp)
-                    .width(250.dp)
-                    .height(56.dp)
-                    .align(CenterHorizontally)
-            ) {
-                Text(text = "Start mixing")
+        HorizontalPager(
+            verticalAlignment = Alignment.Top,
+            count = 2,
+            state = pagerState,
+            modifier = Modifier.fillMaxHeight()
+        ) { tabIndex ->
+            when (tabIndex) {
+                0 -> IngredientTab(drink = drink, Modifier.fillMaxHeight())
+                1 -> StepTab(drink = drink, Modifier.fillMaxHeight())
             }
         }
     }

@@ -80,6 +80,11 @@ dependencies {
     implementation "androidx.activity:activity-compose:1.6.0-alpha01"
     implementation "com.google.accompanist:accompanist-swiperefresh:0.24.2-alpha"
 
+    // External Compose Dependencies
+    implementation "com.google.accompanist:accompanist-flowlayout:0.10.0"
+    implementation "com.google.accompanist:accompanist-pager:0.21.2-beta"
+    implementation "com.google.accompanist:accompanist-pager-indicators:0.21.2-beta"
+
     // Navigation
     implementation("io.github.raamcosta.compose-destinations:core:1.5.8-beta")
     ksp("io.github.raamcosta.compose-destinations:ksp:1.5.8-beta")
@@ -93,6 +98,19 @@ dependencies {
     // Dagger
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
 
+    // Room
+    implementation "androidx.room:room-runtime:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
+
+    // Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:2.4.2"
+
+    // Coil - Images from URL
     implementation("io.coil-kt:coil-compose:2.1.0")
+
+    // Gson serialization/deserialization
+    implementation 'com.google.code.gson:gson:2.9.0'
 }
