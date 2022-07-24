@@ -31,7 +31,7 @@ fun IngredientItem(
         Text(
             text = "${ingredient.name}",
             color = Color.White,
-            fontSize = 14.sp,
+            fontSize = 16.sp,
             fontFamily = Nuosu
         )
     }

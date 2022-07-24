@@ -24,11 +24,14 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.cezila.essential.R
 import com.cezila.essential.presentation.DifficultyIcons
-import com.cezila.essential.presentation.bottom_nav.BottomNavItem
 import com.cezila.essential.presentation.bottom_nav.BottomNavigationBar
+import com.cezila.essential.presentation.bottom_nav.bottomNavItems
 import com.cezila.essential.presentation.destinations.DrinkScreenDestination
 import com.cezila.essential.presentation.destinations.SearchScreenDestination
-import com.cezila.essential.ui.theme.*
+import com.cezila.essential.ui.theme.BackgroundColor
+import com.cezila.essential.ui.theme.Film
+import com.cezila.essential.ui.theme.Nuosu
+import com.cezila.essential.ui.theme.YellowSoft
 import com.cezila.essential.util.Commom.route
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.swiperefresh.SwipeRefresh
@@ -48,22 +51,16 @@ fun HomeScreen(
 
     route = "home"
     val state = viewModel.state
-    val swipeRefreshState = rememberSwipeRefreshState(
-        isRefreshing = state.isRefreshing
-    )
+    val swipeRefreshState = rememberSwipeRefreshState(isRefreshing = state.isRefreshing)
     val gson = Gson()
 
     Scaffold(
         bottomBar = {
             BottomNavigationBar(
-                items = listOf(
-                    BottomNavItem(name = "Discover", route = "home", icon = R.drawable.flame),
-                    BottomNavItem(name = "Search", route = "search", R.drawable.searchicons),
-                    BottomNavItem(name = "About", route = "about", R.drawable.about_icon)
-                ),
+                items = bottomNavItems,
                 onItemClick = {
                     route = it.route
-                    navigator.navigate(route = route)
+                    if (route != "home") navigator.navigate(route = route)
                 }
             )
         }
@@ -172,8 +169,9 @@ fun HomeScreen(
                                 Spacer(modifier = Modifier.height(30.dp))
 
                                 Text(
-                                    text = "Featured Recipe",
-                                    color = Color.White
+                                    text = "Destaque",
+                                    color = Color.White,
+                                    fontFamily = Nuosu
                                 )
 
                                 Spacer(modifier = Modifier.height(10.dp))
@@ -189,7 +187,7 @@ fun HomeScreen(
 
                                 DifficultyIcons(
                                     drink = featuredRecipe,
-                                    modifier = Modifier.width(60.dp)
+                                    modifier = Modifier.width(120.dp)
                                 )
                             }
 
@@ -209,16 +207,16 @@ fun HomeScreen(
                                 .padding(start = 25.dp, top = 25.dp)
                         ) {
                             Text(
-                                text = "Today Recipes",
+                                text = "Em alta",
                                 fontFamily = Nuosu,
                                 color = Color.White,
                                 fontSize = 22.sp
                             )
 
-                            Spacer(modifier = Modifier.width(140.dp))
+                            Spacer(modifier = Modifier.width(200.dp))
 
                             Text(
-                                text = "View All",
+                                text = "Ver Todas",
                                 fontFamily = Nuosu,
                                 color = Color.Gray,
                                 fontSize = 14.sp,
@@ -273,5 +271,4 @@ fun HomeScreen(
             }
         }
     }
-
 }
