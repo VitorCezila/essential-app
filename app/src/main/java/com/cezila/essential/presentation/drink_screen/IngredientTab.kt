@@ -2,6 +2,7 @@ package com.cezila.essential.presentation.drink_screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -31,7 +32,7 @@ fun IngredientTab(
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
         Text(
-            text = "Ingredients",
+            text = "Ingredientes",
             color = Color.White,
             fontSize = 24.sp,
             fontFamily = Nuosu,

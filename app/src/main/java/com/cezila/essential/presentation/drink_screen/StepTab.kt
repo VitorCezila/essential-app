@@ -26,7 +26,7 @@ fun StepTab(
 ) {
     Column(modifier = modifier) {
         Text(
-            text = "Steps",
+            text = "Passo a Passo",
             color = Color.White,
             fontSize = 24.sp,
             fontFamily = Nuosu,

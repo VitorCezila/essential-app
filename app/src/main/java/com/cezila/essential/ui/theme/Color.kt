@@ -18,4 +18,5 @@ val YellowSoft = Color(0xFFDFBB7B)
 val GrayUnuse = Color(0xFFA2ADB1)
 
 val RatedColor = Color(0xFFFFFFFF)
+val CloseBackground = Color(0xFF3D3D3D)
 val UnratedColor = Color(0xFF3D3B3B)
