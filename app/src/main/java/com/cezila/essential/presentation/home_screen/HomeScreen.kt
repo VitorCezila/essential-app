@@ -159,7 +159,9 @@ fun HomeScreen(
                                 modifier = Modifier
                                     .height(1027.dp)
                                     .width(680.dp),
-                                colorFilter = ColorFilter.tint(Film, BlendMode.Multiply)
+                                colorFilter = ColorFilter.tint(Film, BlendMode.Multiply),
+                                placeholder = painterResource(id = R.drawable.loading_png),
+                                error = painterResource(id = R.drawable.image_not_found)
                             )
 
                             Column(
