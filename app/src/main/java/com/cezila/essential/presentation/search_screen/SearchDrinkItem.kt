@@ -13,10 +13,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.cezila.essential.R
 import com.cezila.essential.domain.model.Drink
 import com.cezila.essential.presentation.DifficultyIcons
 import com.cezila.essential.ui.theme.FilmItem
@@ -48,7 +50,9 @@ fun SearchDrinkItem(
                         bottomEnd = 10.dp
                     )
                 ),
-            colorFilter = ColorFilter.tint(FilmItem, BlendMode.Multiply)
+            colorFilter = ColorFilter.tint(FilmItem, BlendMode.Multiply),
+            placeholder = painterResource(id = R.drawable.loading_png),
+            error = painterResource(id = R.drawable.image_not_found)
         )
 
         Spacer(modifier = Modifier.height(4.dp))
@@ -65,7 +69,8 @@ fun SearchDrinkItem(
         DifficultyIcons(
             drink = drink,
             modifier = Modifier
-                .width(60.dp)
+                .width(90.dp)
+                .padding(start = 15.dp)
         )
 
         Spacer(modifier = Modifier.height(4.dp))

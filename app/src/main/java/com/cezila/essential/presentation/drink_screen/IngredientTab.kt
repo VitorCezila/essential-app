@@ -2,7 +2,6 @@ package com.cezila.essential.presentation.drink_screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -16,12 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cezila.essential.R
 import com.cezila.essential.domain.model.Drink
-import com.cezila.essential.domain.model.Ingredient
-import com.cezila.essential.domain.model.IngredientType
-import com.cezila.essential.presentation.DifficultyIcons
-import com.cezila.essential.ui.theme.Nuosu
-import com.cezila.essential.ui.theme.RatedColor
-import com.cezila.essential.ui.theme.UnratedColor
+import com.cezila.essential.ui.theme.*
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 @ExperimentalPagerApi
@@ -31,6 +25,28 @@ fun IngredientTab(
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier.fillMaxWidth()) {
+
+        Text(
+            text = drink.description,
+            modifier = Modifier
+                .fillMaxWidth(),
+            color = TextBeige,
+            fontSize = 14.sp,
+            fontFamily = Nuosu,
+            textAlign = TextAlign.Center
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Divider(
+            color = TextBeige,
+            thickness = 1.dp,
+            modifier = Modifier
+                .padding(start = 130.dp, end = 130.dp)
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         Text(
             text = "Ingredientes",
             color = Color.White,
@@ -57,7 +73,7 @@ fun IngredientTab(
 
         Row(modifier = Modifier.align(CenterHorizontally)) {
             Icon(
-                painter = painterResource(id = R.drawable.icon_circle),
+                painter = painterResource(id = R.drawable.circle_icon),
                 contentDescription = null,
                 modifier = Modifier
                     .width(10.dp)
@@ -66,7 +82,7 @@ fun IngredientTab(
                 tint = RatedColor
             )
             Icon(
-                painter = painterResource(id = R.drawable.icon_circle),
+                painter = painterResource(id = R.drawable.circle_icon),
                 contentDescription = null,
                 modifier = Modifier
                     .width(10.dp)

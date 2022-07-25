@@ -4,7 +4,7 @@ import com.cezila.essential.domain.model.IngredientType
 
 data class IngredientDto(
     val id: String,
-    val amount: Double,
+    val amount: String,
     val name: String,
     val originalName: String,
     val unit: String,

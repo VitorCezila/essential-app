@@ -29,7 +29,7 @@ fun IngredientItem(
         Spacer(modifier = Modifier.width(8.dp))
 
         Text(
-            text = "${ingredient.name}",
+            text = "de ${ingredient.name}",
             color = Color.White,
             fontSize = 16.sp,
             fontFamily = Nuosu

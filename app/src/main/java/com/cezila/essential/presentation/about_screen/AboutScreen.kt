@@ -53,28 +53,56 @@ fun AboutScreen(navigator: DestinationsNavigator) {
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = painterResource(id = R.drawable.coffee_icon),
+                painter = painterResource(id = R.drawable.thanks_cat),
                 contentDescription = null,
                 modifier = Modifier
-                    .height(64.dp)
-                    .width(64.dp)
+                    .height(80.dp)
+                    .width(80.dp)
                     .clip(CircleShape)
             )
 
             Spacer(Modifier.height(10.dp))
 
             Text(
-                text = "Obrigado por baixar meu aplicativo",
+                text = "Obrigado por baixar meu aplicativo.",
                 fontSize = 14.sp,
                 fontFamily = Nuosu,
                 color = Color.White,
                 modifier = Modifier.width(220.dp)
             )
 
-            Spacer(Modifier.height(300.dp))
+            Spacer(Modifier.height(10.dp))
 
             Text(
-                text = "Espresso vector created by catalyststuff",
+                text = "Todas as bebidas são amadoras e foram enviadas por amigos e famíliares.",
+                fontSize = 14.sp,
+                fontFamily = Nuosu,
+                color = Color.White,
+                modifier = Modifier.width(220.dp)
+            )
+
+            Spacer(Modifier.height(10.dp))
+
+            Text(
+                text = "Algumas bebidas podem conter álcool.",
+                fontSize = 14.sp,
+                fontFamily = Nuosu,
+                color = Color.White,
+                modifier = Modifier.width(220.dp)
+            )
+
+            Text(
+                text = "O aplicativo deve ser usado apenas por maiores de 18 anos.",
+                fontSize = 14.sp,
+                fontFamily = Nuosu,
+                color = Color.White,
+                modifier = Modifier.width(220.dp)
+            )
+
+            Spacer(Modifier.height(280.dp))
+
+            Text(
+                text = "All vectors were created by catalyststuff",
                 fontSize = 14.sp,
                 fontFamily = Nuosu,
                 color = Color.White,
