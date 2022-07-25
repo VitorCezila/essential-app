@@ -51,7 +51,7 @@ fun StepTab(
 
         Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             Icon(
-                painter = painterResource(id = R.drawable.icon_circle),
+                painter = painterResource(id = R.drawable.circle_icon),
                 contentDescription = null,
                 modifier = Modifier
                     .width(10.dp)
@@ -60,7 +60,7 @@ fun StepTab(
                 tint = UnratedColor
             )
             Icon(
-                painter = painterResource(id = R.drawable.icon_circle),
+                painter = painterResource(id = R.drawable.circle_icon),
                 contentDescription = null,
                 modifier = Modifier
                     .width(10.dp)
