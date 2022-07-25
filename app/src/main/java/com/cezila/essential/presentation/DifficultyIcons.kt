@@ -24,12 +24,12 @@ fun DifficultyIcons(
     ) {
         for (i in 1..5) {
             Icon(
-                painter = painterResource(id = R.drawable.icon_circle),
+                painter = painterResource(id = R.drawable.black_star),
                 contentDescription = null,
                 modifier = Modifier
-                    .width(10.dp)
-                    .height(10.dp)
-                    .padding(2.dp),
+                    .width(12.dp)
+                    .height(12.dp)
+                    .padding(1.dp),
                 tint = if (i <= drink.difficulty) RatedColor else UnratedColor
             )
         }

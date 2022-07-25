@@ -75,7 +75,7 @@ fun HomeScreen(
                     verticalArrangement = Arrangement.Center
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.preguica_600_600),
+                        painter = painterResource(id = R.drawable.preguica),
                         contentDescription = null,
                         modifier = Modifier
                             .height(128.dp)
