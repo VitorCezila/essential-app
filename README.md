@@ -25,4 +25,4 @@
   - Repository Pattern
 - [Retrofit2 & OkHttp3](https://github.com/square/retrofit): Construct the REST APIs and paging network data.
 - [ksp](https://github.com/google/ksp): Kotlin Symbol Processing API.
-- [Glide](https://github.com/bumptech/glide), [GlidePalette](https://github.com/florent37/GlidePalette): Loading images from network.
+- [Coil](https://coil-kt.github.io/coil/): Loading images from network.
